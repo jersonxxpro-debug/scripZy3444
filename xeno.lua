@@ -1,4 +1,4 @@
--- XENO v6 - HACKER RED + JELLY ANIMATIONS + KEYBINDS
+-- XENO v6.1 - HACKER RED + JELLY ANIMATIONS + KEYBINDS + FIX
 local P=game:GetService("Players")local R=game:GetService("RunService")local U=game:GetService("UserInputService")local T=game:GetService("TweenService")local C=game:GetService("CoreGui")local L=P.LocalPlayer local Cam=workspace.CurrentCamera
 local espE,headE,invisE,speedE,jumpE,flyE=false,false,false,false,false,false
 local spd,fs=50,60
@@ -65,17 +65,36 @@ ab.MouseEnter:Connect(function()tQ(ab,0.15,{BackgroundColor3=RED})end)ab.MouseLe
 local wt=false local wc ab.MouseButton1Click:Connect(function()jelly(ab,0.15)if wt then wt=false ab.Text="SET"kb2.Text=kb[k].Name kb2.TextColor3=RG if wc then wc:Disconnect()wc=nil end return end wt=true ab.Text="..."kb2.Text="[?]"kb2.TextColor3=Color3.fromRGB(255,255,100)
 wc=U.InputBegan:Connect(function(i,gp)if gp then return end if i.UserInputType==Enum.UserInputType.Keyboard then kb[k]=i.KeyCode wt=false ab.Text="SET"kb2.Text=i.KeyCode.Name kb2.TextColor3=RG if wc then wc:Disconnect()wc=nil end end end)end)end
 local isO,isA=false,false
-local function open()if isA or isO then return end isA=true Con.Visible=true Con.Size=UDim2.new(0,10,0,10)Con.Position=UDim2.new(0.5,-5,0.5,-5)M.BackgroundTransparency=1 MS.Transparency=1
-TweenService:Create(Con,TweenInfo.new(0.7,Enum.EasingStyle.Elastic,Enum.EasingDirection.Out),{Size=BS,Position=BP}):Play()
-TweenService:Create(M,TweenInfo.new(0.3),{BackgroundTransparency=0}):Play()
-TweenService:Create(MS,TweenInfo.new(0.3),{Transparency=0}):Play()
-task.wait(0.7)tE(Con,0.3,{Size=UDim2.new(0,345,0,548),Position=UDim2.new(0.5,-172,0.5,-274)})task.wait(0.3)tE(Con,0.25,{Size=BS,Position=BP})
-isO=true isA=false end
-local function close()if isA or not isO then return end isA=true
-TweenService:Create(Con,TweenInfo.new(0.35,Enum.EasingStyle.Back,Enum.EasingDirection.In),{Size=UDim2.new(0,10,0,10),Position=UDim2.new(0.5,-5,0.5,-5)}):Play()
-TweenService:Create(M,TweenInfo.new(0.35),{BackgroundTransparency=1}):Play()
-TweenService:Create(MS,TweenInfo.new(0.35),{Transparency=1}):Play()
-task.wait(0.35)Con.Visible=false isO=false isA=false end
+local function open()
+    if isA or isO then return end
+    isA=true
+    Con.Visible=true
+    Con.Size=UDim2.new(0,10,0,10)
+    Con.Position=UDim2.new(0.5,-5,0.5,-5)
+    M.BackgroundTransparency=1
+    MS.Transparency=1
+    TweenService:Create(Con,TweenInfo.new(0.7,Enum.EasingStyle.Elastic,Enum.EasingDirection.Out),{Size=BS,Position=BP}):Play()
+    TweenService:Create(M,TweenInfo.new(0.3),{BackgroundTransparency=0}):Play()
+    TweenService:Create(MS,TweenInfo.new(0.3),{Transparency=0}):Play()
+    task.wait(0.75)
+    Con.Size=BS
+    Con.Position=BP
+    M.BackgroundTransparency=0
+    MS.Transparency=0
+    isO=true
+    isA=false
+end
+local function close()
+    if isA or not isO then return end
+    isA=true
+    TweenService:Create(Con,TweenInfo.new(0.35,Enum.EasingStyle.Back,Enum.EasingDirection.In),{Size=UDim2.new(0,10,0,10),Position=UDim2.new(0.5,-5,0.5,-5)}):Play()
+    TweenService:Create(M,TweenInfo.new(0.35),{BackgroundTransparency=1}):Play()
+    TweenService:Create(MS,TweenInfo.new(0.35),{Transparency=1}):Play()
+    task.wait(0.35)
+    Con.Visible=false
+    isO=false
+    isA=false
+end
 local function tm()if isO then close()else open()end end
 CB.MouseButton1Click:Connect(function()jelly(CB,0.2)task.wait(0.12)close()end)
 mT("FEATURES",1)mT("KEYBINDS",2)
@@ -164,4 +183,4 @@ local tf={ESP=tESP,NoHead=tNH,Invisible=tIN,Speed=tSP,InfJump=tIJ,Fly=tFL,Menu=t
 U.InputBegan:Connect(function(i,gp)if gp then return end if i.UserInputType~=Enum.UserInputType.Keyboard then return end for k,cd in pairs(kb)do if i.KeyCode==cd then local f=tf[k]if f then f()end break end end end)
 L.CharacterAdded:Connect(function()task.wait(1)if speedE then enS()end if jumpE then enIJ()end if invisE then task.wait(0.2)apI(gC())end if headE then task.wait(0.2)rhC(gC())end end)
 game:BindToClose(function()spE()dsNH()dsI()dsS()dsIJ()dsF()end)
-print("[XENO v6] OK")
+print("[XENO v6.1] OK")
